@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Portfolio | สมัครเรียนสาขาอนิเมชัน</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #2C3E50;
+            --light: #F7F9FC;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Kanit', 'Space Grotesk', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-1);
+            border-radius: 5px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-2);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.6s backwards;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-2);
+            border-radius: 2px;
+        }
+
+        /* Profile Section with Circle Image */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .profile-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), 0 0 0 5px var(--primary);
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3), 0 0 0 8px var(--secondary);
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .profile-circle:hover img {
+            transform: scale(1.1);
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .profile-info h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Personal Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border-left: 5px solid var(--primary);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Skills Table */
+        .skills-section {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .skills-table th {
+            background: var(--gradient-1);
+            color: white;
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .skills-table td {
+            padding: 1.2rem;
+            border-bottom: 1px solid #eee;
+            background: white;
+        }
+
+        .skills-table tr:hover td {
+            background: #f8f9ff;
+        }
+
+        .skill-level {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .level-advanced {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .level-intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .level-beginner {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Projects Gallery */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-3);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .project-card:hover .project-image::after {
+            left: 100%;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Timeline for Experience */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -60px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -60px;
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px;
+                text-align: left !important;
+            }
+
+            .timeline-content::after {
+                left: -50px !important;
+                right: auto !important;
+            }
+        }
+
+        /* Training Cards */
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .training-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .training-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .training-card:hover {
+            transform: scale(1.05);
+        }
+
+        .training-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .training-card .institution {
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .training-card .year {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        /* Motivation Section */
+        .motivation {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 5rem 5%;
+            margin: 0;
+            max-width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .motivation::before {
+            content: '"';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 300px;
+            opacity: 0.1;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .motivation-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .motivation h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .quote-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .goal-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .goal-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .profile-circle {
+                width: 150px;
+                height: 150px;
+            }
+
+            .skills-table {
+                font-size: 0.9rem;
+            }
+
+            .skills-table th,
+            .skills-table td {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">หน้าแรก</a></li>
+            <li><a href="#about">ประวัติส่วนตัว</a></li>
+            <li><a href="#skills">ทักษะ</a></li>
+            <li><a href="#projects">ผลงาน</a></li>
+            <li><a href="#experience">ประสบการณ์</a></li>
+            <li><a href="#training">การอบรม</a></li>
+            <li><a href="#motivation">แรงบันดาลใจ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Animation Portfolio</h1>
+            <p class="subtitle">สมัครเรียนสาขาอนิเมชัน</p>
+            <p class="description">
+                กระผมมีความสนใจด้านอนิเมชันตั้งแต่ระดับมัธยม
+                จากการรับชมสื่อภาพเคลื่อนไหวที่สามารถถ่ายทอดเรื่องราวและอารมณ์ได้อย่างสร้างสรรค์
+                จึงเริ่มศึกษาการวาดภาพ การออกแบบตัวละคร และการทำอนิเมชันด้วยตนเองอย่างต่อเนื่อง
+            </p>
+            <a href="#about" class="cta-button">ดูรายละเอียด</a>
+        </div>
+    </section>
+
+    <!-- Personal & Education Background -->
+    <section id="about" class="fade-in">
+        <h2 class="section-title">ประวัติส่วนตัวและการศึกษา</h2>
+
+        <!-- Profile Section with Circle Image -->
+        <div class="profile-header">
+            <div class="profile-circle">
+                <!-- ใส่รูปภาพโปรไฟล์ของคุณที่นี่ -->
+                <img src="pfp.jpg" alt="รูปโปรไฟล์"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'profile-placeholder\'>👤</div>';">
+                <!-- ถ้าไม่มีรูป จะแสดงไอคอนนี้แทน -->
+            </div>
+            <div class="profile-info">
+                <h3>นายกุลธวัช ศรีทอง</h3>
+                <p>นักเรียนชั้นมัธยมศึกษาปีที่ 6 | ผู้สมัครสาขาอนิเมชัน</p>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🎓 ข้อมูลการศึกษา</h3>
+                <ul>
+                    <li><strong>ระดับชั้น:</strong> มัธยมศึกษาปีที่ 6 (กำลังจะสำเร็จการศึกษา)</li>
+                    <li><strong>โรงเรียน:</strong> บุญวาทย์วิทยาลัยลำปาง</li>
+                    <li><strong>แผนการเรียน:</strong> วิทย์-คณิต-คอมพิวเตอร์</li>
+                    <li><strong>เกรดเฉลี่ย:</strong> [GPA]</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>🎨 วิชาและกิจกรรมที่เกี่ยวข้อง</h3>
+                <ul>
+                    <li>วิชาศิลปะและการออกแบบ</li>
+                    <li>ชมรมศิลปะ</li>
+                    <li>กิจกรรม workshop ออกแบบ</li>
+                    <li>การแข่งขันตัดต่อวิดิโอระดับโรงเรียน/จังหวัด</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>💻 ทักษะพื้นฐาน</h3>
+                <ul>
+                    <li>การวาดภาพด้วยมือ (Traditional Drawing)</li>
+                    <li>การใช้งานคอมพิวเตอร์พื้นฐาน</li>
+                    <li>โปรแกรมกราฟิกดิจิทัล (Photoshop, Clip Studio Paint)</li>
+                    <li>การทำอนิเมชันพื้นฐาน (Flipbook, Stop Motion)</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>🌟 ความสนใจพิเศษ</h3>
+                <ul>
+                    <li>แนวอนิเมชัน 2D และ Anime</li>
+                    <li>Character Design และ Concept Art</li>
+                    <li>Storyboarding และ Visual Storytelling</li>
+                    <li>Motion Graphics และ Game Animation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Programming Table -->
+    <section id="skills" class="fade-in">
+        <div class="skills-section">
+            <h2 class="section-title">ทักษะและโปรแกรมที่ใช้</h2>
+
+            <table class="skills-table">
+                <thead>
+                    <tr>
+                        <th>หมวดหมู่</th>
+                        <th>ทักษะ/โปรแกรม</th>
+                        <th>ระดับความชำนาญ</th>
+                        <th>รายละเอียด</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Drawing Skills</strong></td>
+                        <td>Gesture Drawing & Figure Study</td>
+                        <td><span class="skill-level level-beginner">เริ่มต้น</span></td>
+                        <td>การวาดท่าทางร่างกายและการเคลื่อนไหว</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Drawing Skills</strong></td>
+                        <td>Light & Shadow (Shading)</td>
+                        <td><span class="skill-level level-intermediate">ปานกลาง</span></td>
+                        <td>การลงน้ำหนักแสง การสร้างมิติ 3D Form</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Drawing Skills</strong></td>
+                        <td>Character Design</td>
+                        <td><span class="skill-level level-intermediate">ปานกลาง</span></td>
+                        <td>การออกแบบตัวละคร โครงร่าง บุคลิก</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Software</strong></td>
+                        <td>Adobe Photoshop</td>
+                        <td><span class="skill-level level-intermediate">ปานกลาง</span></td>
+                        <td>การวาดดิจิทัล การตัดต่อภาพ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Software</strong></td>
+                        <td>Clip Studio Paint</td>
+                        <td><span class="skill-level level-beginner">เริ่มต้น</span></td>
+                        <td>การวาดการ์ตูน การทำ Comic</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Animation</strong></td>
+                        <td>Flipbook / Traditional</td>
+                        <td><span class="skill-level level-intermediate">ปานกลาง</span></td>
+                        <td>การทำอนิเมชันแบบเฟรมต่อเฟรม</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3D Software</strong></td>
+                        <td>Autodesk Maya 2022</td>
+                        <td><span class="skill-level level-intermediate">ปานกลาง</span></td>
+                        <td>การสร้างโมเดล 3D พื้นฐาน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Programming</strong></td>
+                        <td>HTML/CSS (Basic)</td>
+                        <td><span class="skill-level level-beginner">เริ่มต้น</span></td>
+                        <td>การสร้างเว็บไซต์พื้นฐาน</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- IT Projects -->
+    <section id="projects" class="fade-in">
+        <h2 class="section-title">ผลงานอนิเมชันและโปรเจกต์</h2>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">🎬</div>
+                <div class="project-content">
+                    <h3>อนิเมชันสั้น "ชีวิตประจำวัน"</h3>
+                    <p>ผลงานอนิเมชันสั้นความยาว 30 วินาที สร้างด้วยเทคนิค Flipbook
+                        แสดงการเคลื่อนไหวของตัวละครในชีวิตประจำวัน</p>
+                    <div class="project-tags">
+                        <span class="tag">2D Animation</span>
+                        <span class="tag">Flipbook</span>
+                        <span class="tag">Traditional</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: var(--gradient-2);">👤</div>
+                <div class="project-content">
+                    <h3>Character Design Collection</h3>
+                    <p>ชุดผลงานการออกแบบตัวละคร original จำนวน 5 ตัวละคร ประกอบด้วย Character Sheet, Expression Sheet
+                        และ Costume Design</p>
+                    <div class="project-tags">
+                        <span class="tag">Character Design</span>
+                        <span class="tag">Digital Art</span>
+                        <span class="tag">Concept Art</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: var(--gradient-3);">📖</div>
+                <div class="project-content">
+                    <h3>Storyboard Project</h3>
+                    <p>สร้าง Storyboard สำหรับหนังสั้น 10 ฉาก แสดงการเล่าเรื่องผ่านภาพต่อเนื่อง
+                        การจัดองค์ประกอบภาพและการเคลื่อนกล้อง</p>
+                    <div class="project-tags">
+                        <span class="tag">Storyboarding</span>
+                        <span class="tag">Visual Storytelling</span>
+                        <span class="tag">Cinematography</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🎨
+                </div>
+                <div class="project-content">
+                    <h3>Life Drawing Portfolio</h3>
+                    <p>ผลงานการวาดจากของจริงและจินตนาการ รวมถึง Gesture Drawing, Still Life และ Figure Drawing จำนวน 20
+                        ชิ้น</p>
+                    <div class="project-tags">
+                        <span class="tag">Life Drawing</span>
+                        <span class="tag">Sketching</span>
+                        <span class="tag">Observation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">🌐
+                </div>
+                <div class="project-content">
+                    <h3>Portfolio Website</h3>
+                    <p>ออกแบบและพัฒนาเว็บไซต์ Portfolio ส่วนตัวด้วย HTML/CSS เพื่อแสดงผลงานการสมัครเข้าศึกษาต่อ</p>
+                    <div class="project-tags">
+                        <span class="tag">Web Design</span>
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">✏️
+                </div>
+                <div class="project-content">
+                    <h3>Motion Graphics Test</h3>
+                    <p>ทดลองสร้าง Motion Graphics ง่ายๆ เกี่ยวกับการเคลื่อนไหวของรูปทรงพื้นฐานและการใช้สีสัน</p>
+                    <div class="project-tags">
+                        <span class="tag">Motion Graphics</span>
+                        <span class="tag">Animation Test</span>
+                        <span class="tag">Experimental</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="fade-in">
+        <h2 class="section-title">ประสบการณ์และกิจกรรม</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025</div>
+                    <h3>เข้าร่วม Workshop อนิเมชัน</h3>
+                    <p>เข้าร่วมอบรมเชิงปฏิบัติการด้านอนิเมชัน 3D จากสถาบันมหาวิทยาลัยเชียงใหม่ เรียนรู้เทคนิคการทำ 3D
+                        Modeling และ Texturing</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025</div>
+                    <h3>แข่งขันตัดต่อวิดิโอระดับจังหวัด</h3>
+                    <p>ได้รับรางวัลรองชนะเลิศเหรียญทอง จากการแข่งขันศิลปหัตถกรรม หัวข้อ "การตัดต่อภาพยนต์" จัดโดย
+                        สำนักงานคณะกรรมการการศึกษาขึ้นพื้นฐาน</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2024-2026</div>
+                    <h3>เริ่มต้นศึกษาด้วยตนเอง</h3>
+                    <p>เริ่มศึกษาการวาดภาพและอนิเมชันด้วยตนเองผ่าน Online Course และ Tutorial บน YouTube
+                        สร้างพื้นฐานด้านศิลปะและการออกแบบ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training -->
+    <section id="training" class="fade-in">
+        <h2 class="section-title">การอบรมและพัฒนาทักษะ</h2>
+
+        <div class="training-grid">
+            <div class="training-card">
+                <h3>🎓 3D Animation Workshop</h3>
+                <p class="institution">สถาบัน มหาวิทยาลัยเชียงใหม่</p>
+                <p>เรียนรู้หลักการพื้นฐานของการทำออกแบบสามมิติ ลง Textures และการใช้โปรแกรมพื้นฐาน</p>
+                <span class="year">พฤษภาคม 2025</span>
+            </div>
+
+            <div class="training-card" style="background: var(--gradient-2);">
+                <h3>🎨 3D Animation Workshop</h3>
+                <p class="institution">สถาบัน มหาวิทยาลัยเชียงใหม่</p>
+                <p>เรียนรู้หลักการพื้นฐานของการทำออกแบบสามมิติ ลง Textures และการใช้โปรแกรมพื้นฐาน</p>
+                <span class="year">เมษายน-พฤษภาคม 2026</span>
+            </div>
+
+            <div class="training-card" style="background: var(--gradient-3);">
+                <h3>✏️ 2D Animation Workshop</h3>
+                <p class="institution">สถาบัน มหาวิทยาลัยเชียงใหม่</p>
+                <p>รอเรียน</p>
+                <span class="year">เมษายน 2026</span>
+            </div>
+
+            <div class="training-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                <h3>💻 Game Development Workshop</h3>
+                <p class="institution">สถาบัน มหาวิทยาลัยเชียงใหม่</p>
+                <p>รอเรียน</p>
+                <span class="year">พฤษภาคม 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivation Section -->
+    <section class="motivation" id="motivation">
+        <div class="motivation-content">
+            <h2>แรงบันดาลใจและเป้าหมาย</h2>
+
+            <div class="quote-box">
+                <p style="font-size: 1.3rem; font-style: italic; line-height: 1.8;">
+                    "ผมเชื่อมั่นว่าการศึกษาในสาขาอนิเมชันจะเปิดโอกาสให้ผมได้สร้างสรรค์สิ่งใหม่ๆ
+                    และทำให้ชีวิตของผู้คนดีขึ้น ผ่านการเล่าเรื่องที่มีพลังและการสื่อสารผ่านภาพเคลื่อนไหว"
+                </p>
+            </div>
+
+            <p style="font-size: 1.1rem; margin: 2rem 0; line-height: 1.8;">
+                แรงบันดาลใจหลักมาจากการรับชมผลงานของสตูดิโอ Studio Ghibli และ Pixar
+                ที่สามารถสร้างสรรค์โลกจินตนาการที่สวยงามและสื่อสารอารมณ์ความรู้สึกได้อย่างลึกซึ้ง
+                ผมต้องการพัฒนาทักษะด้านศิลปะ การออกแบบ และการเล่าเรื่องอย่างเป็นระบบ
+                เพื่อนำความรู้ไปสร้างผลงานที่มีคุณภาพและต่อยอดสู่อาชีพในสายอนิเมชันในอนาคต
+            </p>
+
+            <div class="goals-grid">
+                <div class="goal-item">
+                    <h4>🎓 เป้าหมายในมหาวิทยาลัย</h4>
+                    <p>พัฒนาทักษะการทำอนิเมชัน 2D/3D ให้เชี่ยวชาญ และสร้างผลงานสั้นระดับมืออาชีพ</p>
+                </div>
+                <div class="goal-item">
+                    <h4>🎬 อาชีพในอนาคต</h4>
+                    <p>เป็น Animator หรือ Character Designer ในอุตสาหกรรมอนิเมชันระดับสากล</p>
+                </div>
+                <div class="goal-item">
+                    <h4>🌟 ความฝัน</h4>
+                    <p>สร้างภาพยนตร์อนิเมชันที่สามารถสร้างแรงบันดาลใจและเปลี่ยนแปลงสังคมในทางที่ดี</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="margin-bottom: 1rem;">เหตุผลที่เลือกมหาวิทยาลัยเชียงใหม่</h3>
+                <p style="max-width: 600px; margin: 0 auto;">
+                    มหาวิทยาลัยเชียงใหม่มีชื่อเสียงด้านการศึกษาศิลปะและการออกแบบที่ยอดเยี่ยม
+                    พร้อมทั้งสภาพแวดล้อมที่ส่งเสริมความคิดสร้างสรรค์
+                    และหลักสูตรที่เน้นการปฏิบัติจริง
+                    ซึ่งจะช่วยให้ผมได้รับประสบการณ์ที่หลากหลายและเตรียมพร้อมสำหรับอาชีพในอนาคต
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">ติดต่อผม</p>
+        <p>Email: [kt03072551@gmail.com] | Tel: [095-3549416]</p>
+        <div class="social-links">
+            <a href="#">📧</a>
+            <a href="#">📱</a>
+            <a href="#">🎨</a>
+            <a href="#">🎬</a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
+            © 2024 Animation Portfolio | สมัครเรียนสาขาอนิเมชัน มหาวิทยาลัยเชียงใหม่
+        </p>
+    </footer>
+
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+</body>
+
+</html>
